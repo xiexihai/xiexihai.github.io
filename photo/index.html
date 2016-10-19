@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>photo</title>
+	<meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<style type="text/css">
+		ul{
+			list-style:none;
+		}
+		ul li{
+			float:left;
+			width:200px;
+			height:100px;
+
+		}
+		ul li img{ max-width:100%; }
+	</style>
+</head>
+<body>
+	
+	<ul data-ele="photo">
+		<li><a href="javascript:;" data-src="images/1.jpg"><img src="images/1.jpg"/></a></li>
+		<li><a href="javascript:;" data-src="images/2.jpg"><img src="images/2.jpg"/></a></li>
+		<li><a href="javascript:;" data-src="images/3.jpg"><img src="images/3.jpg"/></a></li>
+		<li><a href="javascript:;" data-src="images/4.jpg"><img src="images/4.jpg"/></a></li>
+		<li><a href="javascript:;" data-src="images/5.jpg"><img src="images/5.jpg"/></a></li>
+		<li><a href="javascript:;" data-src="images/6.jpg"><img src="images/6.jpg"/></a></li>
+	</ul>
+
+
+	<script src="js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="js/photo.js"></script>
+	<script type="text/javascript">
+	var elem=$('[data-ele=photo]').find('li'),
+		photo=new Photo(elem);
+	</script>
+</body>
+</html>

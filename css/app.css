@@ -1,0 +1,30 @@
+.fn-clearfix{
+	zoom:1;
+}
+.fn-clearfix:after{
+	content:"";
+	display:block;
+	clear:both;
+}
+.container{
+	padding:1%;
+}
+.container li{
+	float:left;
+	width:23%;
+	margin:1%;
+	font-size:30px;
+	text-align:center;
+}
+.container li a{
+	display:block;
+	padding:80px 0;
+	border:1px solid #eee;
+	background:#f8f8f8;
+	-webkit-transition:all .3s;
+	transition:all .3s;
+}
+.container li a:hover{
+	box-shadow:0 10px 20px rgba(0,0,0,.1);
+	-webkit-box-shadow:0 10px 20px rgba(0,0,0,.1); 
+}

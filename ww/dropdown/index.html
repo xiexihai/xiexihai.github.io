@@ -1,0 +1,207 @@
+﻿<!doctype html>
+<html>
+	<head>
+		<title>ww</title>
+		<style>
+			*{ margin:0; padding:0;}
+			body{ font:16px 'Microsoft YaHei';}
+			a{ text-decoration:none;}
+			ul,li{ list-style:none;}
+			.nav,
+			.navWrap,
+			.navWrapBox{ width:1000px; height:50px; margin:50px auto; background-color:#404144;}
+			.nav{ position:relative;}
+			.nav li,
+			.navWrap li,
+			.navWrapBox li{ float:left;}
+			.nav li a,
+			.navWrap li a,
+			.navWrapBox li a{ padding:0 25px; display:block; color:#fff; line-height:50px;}
+			.nav li a:hover,
+			.navWrap li a:hover,
+			.navWrapBox li a:hover{ background-color:#111;}
+			
+			.nav-item-container{ position:absolute; left:0; top:100%; width:1000px; height:200px; display:none;}
+			.nav li.on a{ background-color:green;}
+			.nav li.on .nav-item-container{ z-index:2;}
+			
+			
+			.navWrap,
+			.navWrapBox{ margin-top:230px;}
+			.navWrap li,
+			.navWrapBox li{ position:relative;}
+			.navWrap li.on a{ background:blue;}
+			.navWrap li .nav-item,
+			.navWrapBox li .nav-item{ position:absolute; left:0; top:100%; width:200px; height:100px; display:none;}
+			.navWrap li .nav-item ul li,
+			.navWrapBox li .nav-item ul li{ width:100%; height:25px;}
+			.navWrap li .nav-item ul li:hover,
+			.navWrapBox li .nav-item ul li:hover{ background-color:#aaa;}
+			pre{ border:1px solid #ddd; background:#f1f1f1; padding:10px;}
+		</style>
+	</head>
+	<body>
+		
+		
+		<pre>
+			Dropdown.defaults={
+				'child':'.nav-item-container',//下拉容器
+				'event':'mouseenter',         //mouseenter、click
+				'delay':150,                  //延迟秒数  
+				'time':200,                   //运动时间
+				'on':'on'                     //当前下拉添加样式
+				
+			}
+		</pre>
+		
+		<ul class="nav">
+			<li><a href="javascript:;">首页</a></li>
+			<li><a href="javascript:;">小米手机</a>
+				<div class="nav-item-container" style="background-color:#aaa;">
+					1		
+				</div>
+			</li>
+			<li><a href="javascript:;">红米</a>
+				<div class="nav-item-container" style="background-color:#555;">
+					2		
+				</div>
+			</li>
+			<li><a href="javascript:;">小米平板</a>
+				<div class="nav-item-container" style="background-color:yellow;">
+					3		
+				</div>
+			</li>
+			<li><a href="javascript:;">小米电视</a></li>
+			<li><a href="javascript:;">盒子</a></li>
+			<li><a href="javascript:;">路由器</a>
+				<div class="nav-item-container" style="background-color:green;">
+					4		
+				</div>
+			</li>
+			<li><a href="javascript:;">合约机</a></li>
+			<li><a href="javascript:;">服务</a></li>
+			<li><a href="javascript:;">社区</a>
+				<div class="nav-item-container" style="background-color:red;">
+					5		
+				</div>
+			</li>
+		</ul>
+		
+		
+		
+		<ul class="navWrapBox">
+			<li><a href="javascript:;">首页</a></li>
+			<li><a href="javascript:;">小米手机</a>
+				<div class="nav-item" style="background-color:#999;">
+					1		
+				</div>
+			</li>
+			<li><a href="javascript:;">红米</a>
+				<div class="nav-item" style="background-color:#333;">
+					<ul>
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+						<li>4</li>
+					</ul>
+				</div>
+			</li>
+			<li><a href="javascript:;">小米平板</a>
+				<div class="nav-item" style="background-color:green;">
+					3		
+				</div>
+			</li>
+			<li><a href="javascript:;">小米电视</a></li>
+			<li><a href="javascript:;">盒子</a></li>
+			<li><a href="javascript:;">路由器</a>
+				<div class="nav-item" style="background-color:yellow;">
+					4		
+				</div>
+			</li>
+			<li><a href="javascript:;">合约机</a></li>
+			<li><a href="javascript:;">服务</a></li>
+			<li><a href="javascript:;">社区</a>
+				<div class="nav-item" style="background-color:red;">
+					5		
+				</div>
+			</li>
+		</ul>
+		
+		
+		
+		
+		<ul class="navWrap">
+			<li><a href="javascript:;">首页</a></li>
+			<li><a href="javascript:;">小米手机</a>
+				<div class="nav-item" style="background-color:#999;">
+					1		
+				</div>
+			</li>
+			<li><a href="javascript:;">红米</a>
+				<div class="nav-item" style="background-color:#333;">
+					<ul>
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+						<li>4</li>
+					</ul>
+				</div>
+			</li>
+			<li><a href="javascript:;">小米平板</a>
+				<div class="nav-item" style="background-color:green;">
+					3		
+				</div>
+			</li>
+			<li><a href="javascript:;">小米电视</a></li>
+			<li><a href="javascript:;">盒子</a></li>
+			<li><a href="javascript:;">路由器</a>
+				<div class="nav-item" style="background-color:yellow;">
+					4		
+				</div>
+			</li>
+			<li><a href="javascript:;">合约机</a></li>
+			<li><a href="javascript:;">服务</a></li>
+			<li><a href="javascript:;">社区</a>
+				<div class="nav-item" style="background-color:red;">
+					5		
+				</div>
+			</li>
+		</ul>
+		
+		<script src="../js/jquery-1.8.3.min.js"></script>
+		<script src="../js/ww.js"></script>
+		<script>
+		
+		/*ww.dropdown('.nav>li');
+	
+		
+		ww.dropdown('.navWrapBox>li',{
+			'child':'.nav-item'
+		})
+		
+		ww.dropdown('.navWrap>li',{
+			'child':'.nav-item',
+			'event':'click'
+		})
+		*/
+		var aLi=$('.nav>li');
+		var aLiWrap=$('.navWrap>li');
+		var aLiWrapBox=$('.navWrapBox>li');
+		aLi.dropdown({
+			
+		});
+		
+		aLiWrapBox.dropdown({
+			'child':'.nav-item',
+			'delay':80
+		});
+		
+		
+		aLiWrap.dropdown({
+			'child':'.nav-item',
+			'event':'click'
+		});
+		
+		</script>
+	</body>
+</html>

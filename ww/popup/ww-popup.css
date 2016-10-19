@@ -1,0 +1,19 @@
+﻿.ww-popup-mask{ position:fixed; left:0; top:0; right:0; bottom:0; z-index:19900322; background-color:#000; opacity:.5; filter:alpha(opacity=50);}
+.ww-popup-container{ position:fixed; left:50%; top:50%; z-index:19900322; min-width:280px; max-width:500px; background-color:#fff; -webkit-border-radius:3px;  -moz-border-radius:3px;  -ms-border-radius:3px; border-radius:3px; -webkit-box-shadow:0 0 10px #999; -moz-box-shadow:0 0 10px #999; -ms-box-shadow:0 0 10px #999; box-shadow:0 0 10px #999;}
+
+.ww-popup-head{ line-height:40px; padding:0 15px; background-color:#f5f5f5; position:relative;}
+.ww-popup-head h3{ font-weight:normal; font-size:16px;}
+.ww-popup-close{ position:absolute; top:7px; right:15px; width:26px; height:26px; line-height:26px; text-align:center; color:#fff; background:#d5d5d5;}
+.ww-popup-content{ padding:15px; font-size:14px; line-height:26px; color:#333;}
+.ww-popup-foot{ padding:0 15px 15px; text-align:center;}
+.ww-popup-foot a{ display:inline-block; font-size:14px; line-height:28px; padding:0 20px; color:#555; margin:0 5px; -webkit-border-radius:3px; -moz-border-radius:3px;  -ms-border-radius:3px; border-radius:3px; background-color:#ddd;}
+.ww-popup-foot a:hover{ background-color:#d0d0d0;}
+.ww-popup-foot .ww-button-0{ background-color:#ffc000; color:#fff;}
+.ww-popup-foot .ww-button-0:hover{ background-color:#E7B007;}
+.ww-popup-foot .ww-button-2{ background-color:#158CE4; color:#fff;}
+.ww-popup-foot .ww-button-2:hover{ background-color:#117FD1;}
+.ww-popup-foot .ww-button-3{ background-color:#B02323; color:#fff;}
+.ww-popup-foot .ww-button-3:hover{ background-color:#981A1A;}
+
+.ww-popup-tips{ min-width:50px; background-color:rgba(0,0,0,.8); text-align:center;}
+.ww-popup-tips .ww-popup-content{ color:#fff;}

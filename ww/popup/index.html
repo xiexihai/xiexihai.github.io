@@ -1,0 +1,178 @@
+﻿<!doctype html>
+<html>
+	<head>
+		<title>ww</title>
+		<style>
+		
+			*{ margin:0; padding:0;}
+			body{ font-family:'Microsoft YaHei';}
+			.box{ margin:50px; border:1px solid #ddd; display:inline-block; padding:10px 20px;}
+			a{ text-decoration:none;}
+			.login label{ display:block; color:#555;}
+			.login input{ width:90%; border:1px solid #ddd; padding:10px; line-height:18px;}
+		</style>
+		<link href="ww-popup.css" rel="stylesheet"/>
+	</head>
+	<body>
+		
+		
+		<pre style="border:1px solid #ddd; background:#f1f1f1; padding:10px; margin:0 auto;">
+			//入口
+			$.popup.init({
+				"title":"标题",
+				"content":"内容",
+				"mask":true,//是否显示遮罩层
+				"coloseBtn":true,//是都显示关闭按钮
+				"btns":["确定","取消","还可加更多按钮"],
+				"yes":function(index){
+					//默认点击第一个按钮的回调
+				},
+				"no":function(){
+					//默认第二个按钮的回调
+				},
+				"callback":function(i){
+					//第i个按钮的回调，一般用在按钮超过两个的时候
+				},
+				"closeBtnCallback":function(){
+					//关闭按钮的回调
+				},
+				time:2//关闭msg
+				提示层时间，仅仅在标题以及按钮为空的条件下生效（即仅仅设置content内容》）	
+			})
+		</pre>
+		
+		<div class="box box1">confirm</div>
+		
+		<div class="box box2">alert</div>
+		
+		<div class="box box3">msg</div>
+		
+		<div class="box box4">登录</div>
+		
+		
+		<script src="../js/jquery-1.8.3.min.js"></script>
+		<script src="../js/ww.js"></script>
+		<script>
+		$('.box1').click(function(){
+			$.popup.init({
+				'title':'欢迎使用万维popup组件',
+				'content':'您觉得万维UI popup组件好用么？',
+				'btns':['萌萌哒','必须的','不错嘛','一般般'],
+				'yes':function(index){
+					$.popup.close(index);
+					$.popup.init({
+						'title':'确实萌萌哒=。=',
+						'btns':['确定','取消'],
+						'yes':function(index){
+							$.popup.close(index);
+							$.popup.init({
+								'content':'萌萌哒',
+								'time':2
+							});
+						}
+					})
+				},
+				'callback':function(i){
+					if(i==2){
+						$.popup.init({
+							'content':'必须不错嘛',
+							'time':2
+						});
+					}else if(i==3){
+						$.popup.init({
+							'content':'矫情',
+							'time':2
+						});
+					}
+				},
+				'mask':false,
+				'coloseBtn':false
+			
+			
+			});
+			
+			
+		})
+		
+		$('.box2').click(function(){
+			$.popup.init({
+				'title':'欢迎来到玩微官网',
+				'btns':['么么哒','萌萌哒'],
+				'yes':function(index){
+					$.popup.close(index);
+					$.popup.init({
+						'title':'万维简介',
+						'content':'钦州市万维科技有限公司2008年创立于广西南宁，前身为艺设计工作室，七年来一直致力于网站建设、品牌视觉设计以及技术支撑服务。是一支富有梦想，有追求的创业技术团队。 2012年延伸至发展迅速的北部湾地区-广西钦州。',
+						'btns':['确定','取消'],
+						'yes':function(index){
+							$.popup.close(index);
+							$.popup.init({
+								'content':'您选择了确定',
+								'time':2
+							})
+						},
+						'no':function(){
+							$.popup.init({
+								'content':'您选择了取消按钮',
+								'time':2
+							})
+						}
+					})
+				},
+				closeBtnCallback:function(){
+					$.popup.init({
+						'content':'您关闭了按钮！',
+						'time':2
+					})
+				}
+			})
+		})
+		
+		$('.box3').click(function(){
+			$.popup.init({
+				'content':'想些啥就写啥，就是那么任性',
+				'time':2,
+				'mask':false
+			})
+		});
+		
+		var htmlLogin='<div class="login">\
+						<label>用户名：</label><input type="text" name="username" placeholder="请输入用户名"/>\
+						<label>密码：</label><input type="text" name="password" placeholder="请输入用户名"/>\
+					</div>';
+		
+		$('.box4').click(function(){
+			$.popup.init({
+				'title':'用户登录',
+				'content':htmlLogin,
+				'btns':['登录'],
+				'mask':false,
+				'yes':function(index){
+					var _user=$('input[name=username]'),
+						_pwd=$('input[name=password]');
+					if(_user.val()==''){
+						$.popup.init({
+							'content':'用户名不能为空！',
+							'time':1
+						});
+						return;
+					}
+					if(_pwd.val()==''){
+						$.popup.init({
+							'content':'用户名不能为空！',
+							'time':1
+						});
+						return;
+					}
+					$.popup.close(index);
+					$.popup.init({
+							'content':'您输入的：<br/>用户名是：<strong> '+_user.val()+'</strong><br/>密码是：<strong> '+_pwd.val()+'</strong>',
+							'time':3
+						});
+				}
+			})
+		})
+		
+		</script>
+	</body>
+</html>

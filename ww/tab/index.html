@@ -1,0 +1,198 @@
+﻿<!doctype html>
+<html>
+	<head>
+		<title>ww</title>
+		<style>
+			*{ margin:0; padding:0;}
+			body{ font:16px 'Microsoft YaHei';}
+			a{ text-decoration:none;}
+			ul,li{ list-style:none;}
+			
+			
+			.ww-tab-wrap{ float:left; width:564px; margin:20px; border:1px solid #ddd; overflow:hidden; position:relative;}
+			.ww-tab-title{ height:45px; line-height:45px; background-color:#777;}
+			.ww-tab-title-panel{ float:left; padding:0 24px; color:#fff; border-left:1px solid #eee; cursor:pointer;}
+			.ww-tab-title-panel.active{ background-color:#333;}
+			.ww-tab-main{ padding:20px; height:200px;}
+			.ww-tab-main-panel{ display:none;}
+			.ww-tab-main-panel.active{ display:block;}
+			
+			
+			.tab{ float:left; width:564px; border:1px solid #aaa; margin:20px;}
+			.title{ height:45px; line-height:45px; background-color:#eee;}
+			.title li{ float:left; padding:0 20px; background-color:#bbb; color:#fff; margin-right:1px;cursor:pointer;}
+			.title li.current{ background:#555;}
+			.content{ padding:20px; height:200px;}
+			.content-panel{ display:none;}
+			.content-panel.current{ display:block;}
+			
+			
+			
+			.callback{ margin:20px 20px 0; color:Red;}
+			
+			pre{ padding:20px; border:1px solid #ddd; background:#f1f1f1;}
+			
+			.item{ float:left; width:50%;}
+			.desc{ margin:20px; color:green; font-size:18px;}
+		</style>
+	</head>
+	<body>
+		
+		<pre>
+			//参数
+			tab.defaults={
+				'elem':{
+					'tabWrap':'.ww-tab-wrap',              //tab最外层class
+					'tabTitle':'.ww-tab-title',            //tab导航的外层class
+					'tabTitlePanel':'.ww-tab-title-panel', //tab导航的内部class
+					'tabMain':'.ww-tab-main',              //tab内容的外层class
+					'tabMainPanel':'.ww-tab-main-panel',   //tab内容的版块class 
+					'activeClass':'active'                 //当前导航以及内容添加class样式
+				},
+				'eventType':'click',                       //click、mouseenter
+				'autoPlay':false,                          //自动播放
+				'delay':100,                               //鼠标经过延迟 
+				'autoPlayTime':3,                          //自动播放间隔时间
+				'callback':function(index){                //回调（返回当前索引）
+					console.log(index)
+				}				
+			}
+		</pre>
+		
+		<!-------------------------黄金分割线-------------------------->
+		<div class="item">
+			<p class="desc">描述：1、鼠标经过；2、无自动切换；3、有回调；4、设置当前显示第几个<span class="callback"></span></p>
+			
+			<div class="ww-tab-wrap">
+				<ul class="ww-tab-title">
+					<li class="ww-tab-title-panel">2008年</li>
+					<li class="ww-tab-title-panel">2009年</li>
+					<li class="ww-tab-title-panel">2010年</li>
+					<li class="ww-tab-title-panel">2011年</li>
+					<li class="ww-tab-title-panel">2012年</li>
+				</ul>
+				<div class="ww-tab-main">
+					<div class="ww-tab-main-panel">于广西经济管理干部学院成立艺设计工作室，致力于平面设计及电子杂志制作，锐意进取不急于求成，良好的学院背景、完美的品质。</div>
+					<div class="ww-tab-main-panel">踊跃参加各项比赛，分别获得第三届全国大学生广告设计大赛全国优胜奖、第三届广西高校计算机应用大赛二等奖等奖项。获得更多的响应，工作室由2人发展至7人，并开始设计商业作品。</div>
+					<div class="ww-tab-main-panel">艺设计工作室成功举办成果展，见证成立2年以来工作室不负众望，取得骄人的成绩，激励我们不断进取把设计推向一个更高的艺术层次。</div>
+					<div class="ww-tab-main-panel">主动挖掘客户优势并进行整理、包装与有效地传播，设计工作室逐步商业化，提供优秀的作品，提升客户品牌形象、实现客户的商业目标。</div>
+					<div class="ww-tab-main-panel">大学生创业并成立钦州市万维科技有限公司，我们追逐在互联网最前沿；我们能洞察互联网发展与审美趋势，为广大企业提供建站以及品牌设计、运营服务，提供最出色的品牌传播效能。</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-------------------------黄金分割线-------------------------->
+		<div class="item">
+			<p class="desc">描述：1、鼠标经过；2、自动切换；</p>
+			<div class="tab tab1">
+				<ul class="title">
+					<li>定制化网站服务</li>
+					<li>品牌视觉设计</li>
+					<li>网站推广营销</li>
+					<li>技术支持服务</li>
+				</ul>
+				<div class="content">
+					<div class="content-panel">定制化网站服务</div>
+					<div class="content-panel">品牌视觉设计</div>
+					<div class="content-panel">网站推广营销</div>
+					<div class="content-panel">技术支持服务</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-------------------------黄金分割线-------------------------->
+		<div class="item">
+			<p class="desc">描述：1、点击；2、无自动切换；</p>
+			<div class="tab tab2">
+				<ul class="title">
+					<li>定制化网站服务</li>
+					<li>品牌视觉设计</li>
+					<li>网站推广营销</li>
+					<li>技术支持服务</li>
+				</ul>
+				<div class="content">
+					<div class="content-panel">定制化网站服务</div>
+					<div class="content-panel">品牌视觉设计</div>
+					<div class="content-panel">网站推广营销</div>
+					<div class="content-panel">技术支持服务</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		<!-------------------------黄金分割线-------------------------->
+		<div class="item">
+			<p class="desc">描述：1、点击；2、自动切换；</p>
+			<div class="tab tab3">
+				<ul class="title">
+					<li>定制化网站服务</li>
+					<li>品牌视觉设计</li>
+					<li>网站推广营销</li>
+					<li>技术支持服务</li>
+				</ul>
+				<div class="content">
+					<div class="content-panel">定制化网站服务</div>
+					<div class="content-panel">品牌视觉设计</div>
+					<div class="content-panel">网站推广营销</div>
+					<div class="content-panel">技术支持服务</div>
+				</div>
+			</div>
+		</div>
+		
+		<script src="../js/jquery-1.8.3.min.js"></script>
+		<script src="../js/ww.js"></script>
+		<script>
+			new Tab({
+				'eventType':'mouseenter',
+				'callback':function(index){
+					$('.callback').html("当前回调："+index);
+				}
+			}).setIndex(2);//设置显示第几个
+			
+			
+			new Tab({
+				'elem':{
+					'tabWrap':'.tab1',
+					'tabTitle':'.title',
+					'tabTitlePanel':'li',
+					'tabMain':'.content',
+					'tabMainPanel':'.content-panel',
+					'activeClass':'current'
+				},
+				'eventType':'mouseenter',
+				'autoPlay':true,
+				'autoPlayTime':2
+			})
+			
+			new Tab({
+				'elem':{
+					'tabWrap':'.tab2',
+					'tabTitle':'.title',
+					'tabTitlePanel':'li',
+					'tabMain':'.content',
+					'tabMainPanel':'.content-panel',
+					'activeClass':'current'
+				}
+			})
+			
+			new Tab({
+				'elem':{
+					'tabWrap':'.tab3',
+					'tabTitle':'.title',
+					'tabTitlePanel':'li',
+					'tabMain':'.content',
+					'tabMainPanel':'.content-panel',
+					'activeClass':'current'
+				},
+				'autoPlay':true,
+				'autoPlayTime':4
+			})
+			
+		
+			
+		</script>
+		
+	
+		
+	</body>
+</html>

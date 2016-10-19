@@ -1,0 +1,238 @@
+﻿<!doctype html>
+<html>
+	<head>
+		<title>ww</title>
+		<style>
+			*{ margin:0; padding:0;}
+			body{ font:16px 'Microsoft YaHei';}
+			a{ text-decoration:none;}
+			ul,li{ list-style:none;}
+			
+			
+			.slide{ float:left; width:520px; height:280px; margin:20px; overflow:hidden; position:relative;}
+			.slide> ul{ width:100%; position:relative; left:0;}
+			.slide> ul li{ float:left; width:520px; font-size:100px; line-height:280px; text-align:center;}
+			.slide> ul li.left{ left:100%;}
+			.slide> ul li.right{ left:-100%;}
+			
+			
+			.slide ol{ position:absolute; left:0; bottom:10px; z-index:2; width:100%; height:30px; text-align:center;}
+			.slide ol li{ display:inline-block; *display:inline; *zoom:1; width:30px; height:30px; line-height:30px; text-align:center; background:red; margin:0 5px; cursor:pointer;}
+			.slide ol li.active{ background:green;}
+			
+			.slide-prev,
+			.slide-next{ width:30px; height:50px; line-height:50px; position:absolute; top:50%; z-index:2; margin-top:-15px; background:rgba(0,0,0,.5); color:#fff; text-align:center; cursor:pointer;}
+			.slide-prev{ left:0;}
+			.slide-next{ right:0;}
+			
+			.slide1,
+			.slide1 ul li,
+			.slide4,
+			.slide4 ul li{ width:439px; height:236px;}
+			.slide1 ol,
+			.slide4 ol{ bottom:0;}
+			.slide1 ol li,
+			.slide4 ol li{ width:10px; height:10px; text-indent:-9999px; -webkit-border-radius:50%; border-radius:50%;}
+			
+			
+			.slide3 ol{ text-align:right;}
+			.slide-title{ position:absolute; bottom:0; left:0; width:100%; height:50px; line-height:50px; background:rgba(0,0,0,.6); color:#fff; text-indent:10px;;}
+			.slide-title li{ display:none;}
+			
+			.item{ float:left; width:50%;}
+			.desc{ color:green; font-size:16px; margin:20px 20px 0;}
+			
+			.callback{ color:red;}
+			
+			pre{ border:1px solid #ddd; background:#f1f1f1;}
+		</style>
+	</head>
+	<body>
+		
+		<pre>
+			Slide.defaults={
+				'eventType':'click', //click、mouseenter
+				'effect':'left',     //left、top、fadeIn
+				'delay':200,         //延迟时间（eventType为mouseenter）
+				'time':300,          //动画持续时间
+				'paginationBtn':true,//是否显示分页按钮
+				'prevNextBtn':true,  //是否显示左右切换按钮
+				'autoPlay':true,     //是否自动播放
+				'autoPlayTime':3,    //自动播放间隔时间
+				'callback':function(index){ //回调
+					console.log(index)
+				}
+			}
+		</pre>
+		<!---------黄金分割线-------->
+		<div class="item">
+			<p class="desc">描述：1、无自动切换；2、显示左右按钮；3、左右切换</p>
+			<div class="slide slide1">
+				<ul>
+					<li><a href="#"><img src="../images/jd-1.jpg"/></a></li>
+					<li><a href="#"><img src="../images/jd-2.jpg"/></a></li>
+					<li><a href="#"><img src="../images/jd-3.jpg"/></a></li>
+					<li><a href="#"><img src="../images/jd-4.jpg"/></a></li>
+					
+				</ul>
+			</div>
+		</div>
+		
+		<!---------黄金分割线-------->
+		<div class="item">
+			<p class="desc">描述：1、自动切换；2、显示分页按钮；3、鼠标经过</p>
+			<div class="slide slide4">
+				<ul>
+					<li><a href="#"><img src="../images/jd-1.jpg"/></a></li>
+					<li><a href="#"><img src="../images/jd-2.jpg"/></a></li>
+					<li><a href="#"><img src="../images/jd-3.jpg"/></a></li>
+					<li><a href="#"><img src="../images/jd-4.jpg"/></a></li>
+					<li><a href="#"><img src="../images/jd-2.jpg"/></a></li>
+					<li><a href="#"><img src="../images/jd-3.jpg"/></a></li>
+				</ul>
+			</div>
+		</div>
+		
+		<!---------黄金分割线-------->
+		<div class="item">
+			<p class="desc">描述：1、自动切换；2、显示分页按钮；3、显示左右按钮；4、鼠标经过</p>
+			<div class="slide slide2">
+				<ul>
+					<li><a href="#"><img src="../images/520-280-1.jpg"/></a></li>
+					<li><a href="#"><img src="../images/520-280-2.jpg"/></a></li>
+					<li><a href="#"><img src="../images/520-280-3.jpg"/></a></li>
+					<li><a href="#"><img src="../images/520-280-4.jpg"/></a></li>
+				</ul>
+			</div>
+		</div>
+		
+		
+		<!---------黄金分割线-------->
+		<div class="item">
+			<p class="desc">描述：1、自动切换；2、显示分页按钮；3、显示左右按钮；4、鼠标点击；5、有回调函数 <span class="callback"></span></p>
+			<div class="slide slide3">
+				<ul>
+					<li><a href="#"><img src="../images/520-280-1.jpg"/></a></li>
+					<li><a href="#"><img src="../images/520-280-2.jpg"/></a></li>
+					<li><a href="#"><img src="../images/520-280-3.jpg"/></a></li>
+					<li><a href="#"><img src="../images/520-280-4.jpg"/></a></li>
+					<li><a href="#"><img src="../images/520-280-5.jpg"/></a></li>
+				</ul>
+				<div class="slide-title">
+					<ul>
+						<li>标题一</li>
+						<li>标题二</li>
+						<li>标题三</li>
+						<li>标题四</li>
+						<li>标题五</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<!---------黄金分割线-------->
+		<div class="item">
+			<p class="desc">描述：1、自动切换；2、显示分页按钮；3、显示左右按钮；4、鼠标点击；5、左右切换</p>
+			<div class="slide slide5">
+				<ul>
+					<li><a href="#"><img src="../images/520-280-1.jpg"/></a></li>
+					<li><a href="#"><img src="../images/520-280-2.jpg"/></a></li>
+					<li><a href="#"><img src="../images/520-280-3.jpg"/></a></li>
+					<li><a href="#"><img src="../images/520-280-4.jpg"/></a></li>
+				</ul>
+			</div>
+		</div>
+		<!---------黄金分割线-------->
+		<div class="item">
+			<p class="desc">描述：1、自动切换；2、显示分页按钮；3、显示左右按钮；4、鼠标点击；5、淡入淡出</p>
+			<div class="slide slide6">
+				<ul>
+					<li><a href="#"><img src="../images/520-280-1.jpg"/></a></li>
+					<li><a href="#"><img src="../images/520-280-2.jpg"/></a></li>
+					<li><a href="#"><img src="../images/520-280-3.jpg"/></a></li>
+					<li><a href="#"><img src="../images/520-280-4.jpg"/></a></li>
+				</ul>
+			</div>
+		</div>
+		
+		
+		<!---------黄金分割线-------->
+		<div class="item">
+			<p class="desc">描述：1、自动切换；2、显示分页按钮；3、显示左右按钮；4、鼠标经过；5、淡入淡出</p>
+			<div class="slide slide7">
+				<ul>
+					<li><a href="#"><img src="../images/520-280-1.jpg"/></a></li>
+					<li><a href="#"><img src="../images/520-280-2.jpg"/></a></li>
+					<li><a href="#"><img src="../images/520-280-3.jpg"/></a></li>
+					<li><a href="#"><img src="../images/520-280-4.jpg"/></a></li>
+					<li><a href="#"><img src="../images/520-280-2.jpg"/></a></li>
+					<li><a href="#"><img src="../images/520-280-3.jpg"/></a></li>
+				</ul>
+			</div>
+		</div>
+		
+		<script src="../js/jquery-1.8.3.min.js"></script>
+		<script src="../js/ww.js"></script>
+		<script>
+		
+		
+			new Slide($('.slide1'),{
+					'eventType':'click',
+					'time':200,
+					'autoPlay':false,
+					'paginationBtn':false,
+					'autoPlayTime':2
+			})
+			new Slide($('.slide4'),{
+					'eventType':'mouseenter',
+					'time':200,
+					'prevNextBtn':false,
+					'autoPlayTime':1,
+				})
+			
+			new Slide($('.slide2'),{
+					'eventType':'mouseenter',
+					'autoPlayTime':2,
+					'effect':'left',
+					'callback':function(index){
+						//console.log(index)
+					}
+				})
+			
+			var title=$('.slide-title li');
+				title.eq(0).show();	
+				
+			var slide3=new Slide($('.slide3'),{
+					'eventType':'click',
+					'time':180,
+					'callback':function(index){
+						title.eq(index).show().siblings().hide();
+						$('.callback').html('当前所以：'+index)
+					}
+				})
+			
+			new Slide($('.slide5'),{
+					'eventType':'click',
+					'effect':'top',
+					'time':200,
+					'autoPlayTime':2
+			})	
+
+			new Slide($('.slide6'),{
+					'eventType':'click',
+					'effect':'fadeIn',
+					'time':200,
+					'autoPlayTime':2
+			})				
+			new Slide($('.slide7'),{
+					'eventType':'mouseenter',
+					'effect':'fadeIn',
+					'time':200,
+					'autoPlayTime':2
+			})
+		</script>
+		
+	
+		
+	</body>
+</html>

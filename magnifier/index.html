@@ -1,0 +1,214 @@
+﻿
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title></title>
+		<style>
+			*{ margin:0; padding:0}
+			body{ font:12px "Microsoft YaHei";}
+			ul{ list-style:none;}
+			a{ text-decoration:none;}
+			
+			.magnifying{ width:550px; height:585px; border:1px solid #ddd; padding:10px; margin:50px; }
+			
+			.ma-left{ float:left; width:70px; height:400px;}
+			.ma-scroll-wrap{ margin-left:7px;}
+			
+			.maUpBtn,.maDownBtn{ float:left; width:0; height:0; border-style:solid; border-width:10px; border-color:transparent transparent #000 transparent; margin-left:18px;}
+			.maDownBtn{ border-color:#000 transparent transparent transparent;}
+			
+			.ma-scroll-container{ float:left; width:56px; height:268px; position:relative; overflow:hidden; margin:10px 0;}
+			.ma-scroll-container ul{ position:absolute; top:0;}
+			.ma-scroll-container ul li{ float:left; width:56px; height:84px; line-height:84px; text-align:center; overflow:hidden; margin-bottom:8px; cursor:pointer;}
+			
+			.ma-right{ float:right; width:472px; height:585px; position:relative;}
+			.ma-smPic{ width:390px; height:585px; margin:0 auto; cursor:crosshair; position:relative;overflow:hidden; }
+			.ma-smPic img{ width:390px; height:585px; display:black;}
+			.ma-moveBox{ width:160px; height:160px; background-color:#fff; opacity:.7; filter:alpha(opacity=70); position:absolute; border:1px solid #eee; display:none;}
+			.ma-tips{ width:85px; height:24px; line-height:24px; text-align:center; background-color:#fff; opacity:.7; position:absolute; z-index:99; border:1px solid #eee; display:none;}
+			
+			.ma-bigPic{ width:395px; height:495px; border:1px solid #eee; position:absolute; top:0; left:500px; overflow:hidden; display:none;}
+			.ma-bigPic img{ position:relative;}
+			
+		</style>
+    </head>
+    <body>
+		
+		
+		<div class="magnifying">
+			<div class="ma-left">
+				<div class="ma-scroll-wrap">
+					<a href="javascript:;" class="maUpBtn"></a>
+					
+					<div class="ma-scroll-container">
+						<ul>
+							<li><img src="images/539205_bk_xs.jpg" data-smPic="images/539205_bk_pp.jpg" data-bigPic="images/539205_bk_xl.jpg"/></li>
+							<li><img src="images/539205_cu_xs.jpg" data-smPic="images/539205_cu_pp.jpg" data-bigPic="images/539205_cu_xl.jpg"/></li>
+							<li><img src="images/539205_fr_xs.jpg" data-smPic="images/539205_fr_pp.jpg" data-bigPic="images/539205_fr_xl.jpg"/></li>
+							<li><img src="images/539205_in_xs.jpg" data-smPic="images/539205_in_pp.jpg" data-bigPic="images/539205_in_xl.jpg"/></li>
+							<li><img src="images/539205_ou_xs.jpg" data-smPic="images/539205_ou_pp.jpg" data-bigPic="images/539205_ou_xl.jpg"/></li>
+						</ul>
+					</div>
+					
+					<a href="javascript:;" class="maDownBtn"></a>
+					
+				</div>
+			</div>
+			
+			<div class="ma-right">
+				<div class="ma-smPic">
+					<img src=""/>
+					<div class="ma-moveBox"></div>
+					<div class="ma-tips">点击放大图片</div>
+				</div>
+				<div class="ma-bigPic">
+					<img src=""/>
+				</div>
+				
+			</div>
+		</div>
+		
+		
+	</body>
+	<script src="js/jquery-1.8.3.min.js" type="text/javascript"></script>
+		<script>
+			(function(){
+			
+				var magnifying={
+					init:function(){
+						this.getDom();
+						this.bindEvent();
+					},
+					getDom:function(){
+						this.oMaLeft=$('.ma-left');
+						this.oMaScrollContainer=this.oMaLeft.find('.ma-scroll-container');
+						
+						this.oMaRight=$('.ma-right');
+						this.oMaSmpic=this.oMaRight.find('.ma-smPic');
+						this.oMaBigpic=this.oMaRight.find('.ma-bigPic');
+						this.oMaMoveBox=this.oMaSmpic.find('.ma-moveBox');
+						this.oMaTips=this.oMaSmpic.find('.ma-tips');
+						
+						var sPic=this.oMaScrollContainer.find('li').eq(0).find('img').attr('data-smPic');
+						var bPic=this.oMaScrollContainer.find('li').eq(0).find('img').attr('data-bigPic');
+						this.oMaSmpic.find('img').attr('src',sPic);
+						this.oMaBigpic.find('img').attr('src',bPic);
+					},
+					bindEvent:function(){
+						var self=this;
+
+						var h=92;
+						var oUl=this.oMaScrollContainer.find('ul');
+						
+						//图片切换
+						this.oMaLeft.on('click',function(e){
+							if(e.target.nodeName=="IMG"){//点击图片
+								var smPic=$(e.target).attr('data-smPic');
+								var bigPic=$(e.target).attr('data-bigPic');
+								self.oMaSmpic.find('img').attr('src',smPic);
+								self.oMaBigpic.find('img').attr('src',bigPic);
+								self.oMaLeft.find('.maDownBtn').trigger('click');
+							}else if($(e.target).hasClass('maUpBtn')){//UP
+								 if (!oUl.is(':animated')) {
+									oUl.css('top', -h).find('li:last').prependTo(oUl);
+									oUl.stop().animate({ 'top': 0 }, 500);
+									
+								};
+							}else if($(e.target).hasClass('maDownBtn')){//DOWN
+								if (!oUl.is(':animated')) {
+									oUl.stop().animate({ 'top': -h }, 500, function () {
+										oUl.css('top', 0).find('li:first').appendTo(oUl);
+									});
+									
+								};
+							}
+						
+						});
+					
+
+						//放大镜
+						this.oMaSmpic.on('mouseenter',function(){
+						
+							self.oMaTips.fadeIn();
+							
+						}).on('mousemove',function(e){
+							var l=e.pageX-self.oMaSmpic.offset().left-self.oMaTips.outerWidth()/2;
+							var t=e.pageY-self.oMaSmpic.offset().top-self.oMaTips.outerHeight();
+							var mW=self.oMaSmpic.outerWidth()-self.oMaTips.outerWidth();
+								var mH=self.oMaSmpic.outerHeight()-self.oMaTips.outerHeight();
+								if(l<0){
+									l=0;
+								}else if(l>mW){
+									l=mW;
+								}
+								
+								if(t<0){
+									t=0;
+								}else if(t>mH){
+									t=mH;
+								}
+							
+							
+							self.oMaTips.css({
+								'left':l,
+								'top':t
+							});
+							
+							if(self.oMaMoveBox.is(':visible')){
+								var posX=e.pageX-self.oMaSmpic.offset().left-self.oMaMoveBox.outerWidth()/2;
+								var posY=e.pageY-self.oMaSmpic.offset().top-self.oMaMoveBox.outerHeight()/2;
+								var maxW=self.oMaSmpic.outerWidth()-self.oMaMoveBox.outerWidth();
+								var maxH=self.oMaSmpic.outerHeight()-self.oMaMoveBox.outerHeight();
+								if(posX<0){
+									posX=0;
+								}else if(posX>maxW){
+									posX=maxW;
+								}
+								
+								if(posY<0){
+									posY=0;
+								}else if(posY>maxH){
+									posY=maxH;
+								}
+								
+								self.oMaMoveBox.css({
+									'left':posX,
+									'top':posY
+								});
+								
+								var scaleX=posX/maxW;
+								var scaleY=posY/maxH;
+								var w=self.oMaBigpic.find('img').outerWidth()-self.oMaBigpic.outerWidth();
+								var h=self.oMaBigpic.find('img').outerHeight()-self.oMaBigpic.outerHeight();
+								
+								self.oMaBigpic.find('img').css({
+									'left':-w*scaleX,
+									'top':-h*scaleY
+								});
+								
+							}
+							
+						}).on('click',function(){
+						
+							self.oMaTips.fadeOut();
+							self.oMaMoveBox.fadeIn();
+							self.oMaBigpic.fadeIn();
+							
+						}).on('mouseleave',function(){
+						
+							self.oMaTips.fadeOut();
+							self.oMaMoveBox.fadeOut();
+							self.oMaBigpic.fadeOut();
+							
+						})
+					}
+				
+				}
+				
+				magnifying.init();
+
+			})();
+		</script>
+</html>	
+
